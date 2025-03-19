@@ -6,33 +6,31 @@
 /*   By: kenzo <kenzo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:28:16 by kenzo             #+#    #+#             */
-/*   Updated: 2024/08/26 23:50:25 by kenzo            ###   ########.fr       */
+/*   Updated: 2025/02/14 16:03:38 by kenzo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef H_CONTACT_H
-# define H_CONTACT_H
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
-#include <iostream>
-#include <iomanip>
 #include <string>
-#include <cstdlib>
+#include <iostream>
 
-class Contact{
+class Contact {
+private:
+    std::string FirstName;
+    std::string LastName;
+    std::string NickName;
+    std::string PhoneNumber;
+    std::string DarkestSecret;
 
-public :
-	Contact();
-	~Contact();
-	void SetContact();
-	void GetContact();
+public:
+    Contact();
+    ~Contact();
 
-private :
-	std::string	FirstName;
-	std::string LastName;
-	std::string NickName;
-	std::string PhoneNumber;
-	std::string DarkestSecret;
+    void SetContact();
+    void DisplaySummary(int index) const;
+    void DisplayDetails() const;
 };
-
 
 #endif

@@ -1,9 +1,9 @@
-NAME = phonebook
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp srcs/PhoneBook.cpp srcs/Contact.cpp
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 OBJS = $(SRCS:.cpp=.o)
+NAME = zombie_horde
 
 all: $(NAME)
 

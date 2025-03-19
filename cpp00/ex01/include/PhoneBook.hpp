@@ -6,34 +6,30 @@
 /*   By: kenzo <kenzo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 22:28:14 by kenzo             #+#    #+#             */
-/*   Updated: 2024/08/26 23:15:20 by kenzo            ###   ########.fr       */
+/*   Updated: 2025/02/14 16:03:34 by kenzo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef H_PHONEBOOK_H
-# define H_PHONEBOOK_H
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <cstdlib>
 #include "Contact.hpp"
 
-class PhoneBook{
+class PhoneBook {
+private:
+    Contact contacts[8];
+    int contactCount;
+    int oldestIndex;
 
-public :
-		PhoneBook();
-		~PhoneBook();
+public:
+    PhoneBook();
+    ~PhoneBook();
 
-		void Add();
-		void Search();
-		void Exit();
-
-private :
-	Contact	_PhoneBook[8];
-	bool	reset;
-	
+    void Add();
+    void Search();
 };
-
 
 #endif
