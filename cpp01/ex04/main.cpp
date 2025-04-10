@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kenzo <kenzo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:07:24 by kenzo             #+#    #+#             */
-/*   Updated: 2025/04/07 14:09:20 by kenzo            ###   ########.fr       */
+/*   Updated: 2025/04/10 16:11:13 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/Sed.hpp"
+#include "include/Replace.hpp"
 
 int main(int argc, char **argv) {
     if (argc != 4) {
@@ -18,8 +18,8 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    Sed sed(argv[1], argv[2], argv[3]);
-    if (!sed.process())
+    Replace Replace(argv[1], argv[2], argv[3]);
+    if (!Replace.process())
         return 1;
 
     return 0;

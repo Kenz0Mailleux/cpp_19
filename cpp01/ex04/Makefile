@@ -1,8 +1,8 @@
-NAME = sed
+NAME = Replace
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp srcs/Sed.cpp
+SRCS = main.cpp srcs/Replace.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

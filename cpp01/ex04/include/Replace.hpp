@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Sed.hpp                                            :+:      :+:    :+:   */
+/*   Replace.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kenzo <kenzo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:06:51 by kenzo             #+#    #+#             */
-/*   Updated: 2025/04/07 14:14:57 by kenzo            ###   ########.fr       */
+/*   Updated: 2025/04/10 14:22:29 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <fstream>
 #include <iostream>
 
-class Sed {
+class Replace {
 public:
-    Sed(const std::string& filename, const std::string& s1, const std::string& s2);
+    Replace(const std::string& filename, const std::string& s1, const std::string& s2);
     bool process();
 
 private:

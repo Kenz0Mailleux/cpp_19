@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Sed.cpp                                            :+:      :+:    :+:   */
+/*   Replace.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kenzo <kenzo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:07:02 by kenzo             #+#    #+#             */
-/*   Updated: 2025/04/07 14:14:36 by kenzo            ###   ########.fr       */
+/*   Updated: 2025/04/10 15:51:52 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Sed.hpp"
+#include "../include/Replace.hpp"
 
-Sed::Sed(const std::string& filename, const std::string& s1, const std::string& s2)
+Replace::Replace(const std::string& filename, const std::string& s1, const std::string& s2)
     : _filename(filename), _s1(s1), _s2(s2) {}
 
-std::string Sed::replaceString(const std::string& line) {
+std::string Replace::replaceString(const std::string& line)
+{
     std::string result;
+    size_t found;
     size_t pos = 0;
-    size_t prev = 0;
 
-    while ((pos = line.find(_s1, prev)) != std::string::npos) {
-        result += line.substr(prev, pos - prev);
+    while (true) {
+        found = line.find(_s1, pos);
+        if (found == std::string::npos) {
+            result += line.substr(pos);
+            break;
+        }
+        result += line.substr(pos, found - pos);
         result += _s2;
-        prev = pos + _s1.length();
+        pos = found + _s1.length();
     }
-    result += line.substr(prev);
     return result;
 }
+    
 
-bool Sed::process() {
+bool Replace::process()
+{
     std::ifstream infile(_filename);
     std::ofstream outfile(_filename + ".replace");
     std::string line;
