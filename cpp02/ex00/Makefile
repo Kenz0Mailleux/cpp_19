@@ -1,9 +1,9 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp srcs/Zombie.cpp srcs/newZombie.cpp srcs/randomChump.cpp
+SRCS = main.cpp srcs/Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = zombie
+NAME = fixed
 
 all: $(NAME)
 

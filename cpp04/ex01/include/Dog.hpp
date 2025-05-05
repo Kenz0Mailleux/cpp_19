@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 16:49:24 by kenzo             #+#    #+#             */
-/*   Updated: 2025/04/10 15:16:28 by kmailleu         ###   ########.fr       */
+/*   Created: 2025/04/18 13:45:11 by kenzo             #+#    #+#             */
+/*   Updated: 2025/04/18 17:07:39 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
+#include "Animal.hpp"
+#include "Brain.hpp"
 #include <iostream>
-#include <string>
 
-class Zombie {
+class Dog : public Animal {
 private:
-    std::string name;
+    Brain* _brain;
 
 public:
-    Zombie();
-    Zombie(std::string name);
-    ~Zombie();
-
-    void setName(std::string name);
-    void announce() const;
+    Dog();
+    virtual ~Dog();
+    Dog(const Dog &other);
+    Dog &operator=(const Dog &other);
+    
+    void makeSound() const override;
+    Brain* getBrain() const;
 };
-
-Zombie* zombieHorde(int N, std::string name);
 
 #endif

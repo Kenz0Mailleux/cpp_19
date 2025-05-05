@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 16:49:24 by kenzo             #+#    #+#             */
-/*   Updated: 2025/04/10 15:16:28 by kmailleu         ###   ########.fr       */
+/*   Created: 2025/04/18 13:46:29 by kenzo             #+#    #+#             */
+/*   Updated: 2025/04/18 17:08:51 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "../include/WrongAnimal.hpp"
 
-#include <iostream>
-#include <string>
+WrongAnimal::WrongAnimal() : _type("Wrong Animal") {
+    std::cout << "WrongAnimal constructor called" << std::endl;
+}
 
-class Zombie {
-private:
-    std::string name;
+WrongAnimal::~WrongAnimal() {
+    std::cout << "WrongAnimal destructor called" << std::endl;
+}
 
-public:
-    Zombie();
-    Zombie(std::string name);
-    ~Zombie();
+void WrongAnimal::makeSound() const {
+    std::cout << "Wrong Animal sound" << std::endl;
+}
 
-    void setName(std::string name);
-    void announce() const;
-};
-
-Zombie* zombieHorde(int N, std::string name);
-
-#endif
+std::string WrongAnimal::getType() const {
+    return _type;
+}

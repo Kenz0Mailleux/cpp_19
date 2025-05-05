@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/02 17:10:21 by kmailleu          #+#    #+#             */
-/*   Updated: 2025/04/10 15:33:00 by kmailleu         ###   ########.fr       */
+/*   Created: 2025/04/14 14:33:04 by kmailleu          #+#    #+#             */
+/*   Updated: 2025/04/14 14:46:19 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-#define WEAPON_HPP
 
-#include <iostream>
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
+
 #include <string>
+#include <iostream>
 
-class Weapon {
+class ClapTrap {
 private:
-    std::string type;
-
+    std::string _name;
+    int _hitPoints;
+    int _energyPoints;
+    int _attackDamage;
 
 public:
-    Weapon();
-    Weapon(std::string type);
-    ~Weapon();
+    ClapTrap(const std::string& name);
+    ClapTrap(const ClapTrap& other);
+    ClapTrap& operator=(const ClapTrap& other);
+    virtual ~ClapTrap();
 
-    std::string getType();
-    void setType(std::string type);
+    virtual void attack(const std::string& target);
+    void takeDamage(unsigned int amount);
+    void beRepaired(unsigned int amount);
 };
 
 #endif

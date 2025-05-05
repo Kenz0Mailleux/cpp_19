@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 16:49:24 by kenzo             #+#    #+#             */
-/*   Updated: 2025/04/10 15:16:28 by kmailleu         ###   ########.fr       */
+/*   Created: 2025/02/14 16:28:04 by kenzo             #+#    #+#             */
+/*   Updated: 2025/04/14 14:41:39 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "include/ClapTrap.hpp"
 
-#include <iostream>
-#include <string>
-
-class Zombie {
-private:
-    std::string name;
-
-public:
-    Zombie();
-    Zombie(std::string name);
-    ~Zombie();
-
-    void setName(std::string name);
-    void announce() const;
-};
-
-Zombie* zombieHorde(int N, std::string name);
-
-#endif
+int main()
+{
+    ClapTrap Charles("Charles");
+    ClapTrap Magne("Magne");
+    Charles.attack("Magne");
+    Magne.takeDamage(5);
+    Magne.beRepaired(3);
+    Magne.attack("Charles");
+    Charles.takeDamage(10);
+    Charles.attack("Magne");
+    Charles.beRepaired(5);
+    return 0;
+}

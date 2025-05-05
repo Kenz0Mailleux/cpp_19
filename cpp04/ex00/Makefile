@@ -1,9 +1,9 @@
+NAME = poly
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp srcs/Zombie.cpp srcs/newZombie.cpp srcs/randomChump.cpp
+SRCS = main.cpp srcs/Animal.cpp srcs/Dog.cpp srcs/Cat.cpp srcs/WrongAnimal.cpp srcs/WrongCat.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = zombie
 
 all: $(NAME)
 

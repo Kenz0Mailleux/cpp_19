@@ -1,9 +1,9 @@
-NAME = phonebook
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp
+SRCS = main.cpp srcs/ClapTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
+NAME = clapTrap
 
 all: $(NAME)
 

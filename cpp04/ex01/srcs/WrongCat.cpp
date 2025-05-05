@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 16:49:24 by kenzo             #+#    #+#             */
-/*   Updated: 2025/04/10 15:16:28 by kmailleu         ###   ########.fr       */
+/*   Created: 2025/04/18 13:47:17 by kenzo             #+#    #+#             */
+/*   Updated: 2025/04/18 17:08:54 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "../include/WrongCat.hpp"
 
-#include <iostream>
-#include <string>
+WrongCat::WrongCat() {
+    _type = "WrongCat";
+    std::cout << "WrongCat constructor called" << std::endl;
+}
 
-class Zombie {
-private:
-    std::string name;
+WrongCat::~WrongCat() {
+    std::cout << "WrongCat destructor called" << std::endl;
+}
 
-public:
-    Zombie();
-    Zombie(std::string name);
-    ~Zombie();
-
-    void setName(std::string name);
-    void announce() const;
-};
-
-Zombie* zombieHorde(int N, std::string name);
-
-#endif
+void WrongCat::makeSound() const {
+    std::cout << "Wrong Meow" << std::endl;
+}
