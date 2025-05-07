@@ -6,11 +6,11 @@
 /*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:18:32 by kmailleu          #+#    #+#             */
-/*   Updated: 2025/05/05 17:36:30 by kmailleu         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:56:59 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Bureaucrat.hpp"
+# include "../include/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Lagea"), _grade(150) {
     std::cout << "Bureaucrat constructor called" << std::endl;
@@ -73,6 +73,17 @@ void Bureaucrat::decrementGrade(){
     }
     else{
         throw (Bureaucrat::GradeTooLowException());
+    }
+}
+
+void Bureaucrat::signForm(Form &formName){
+    if ( formName.getIsSigned() == true)
+    {
+        std::cout << this->getName() << " signed " << formName.getName() << std::endl;
+    }
+    else
+    {
+        std::cout << this->getName() << " couldn’t sign < " << formName.getName() << " because " << std::endl;
     }
 }
 

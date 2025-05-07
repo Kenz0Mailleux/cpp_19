@@ -6,7 +6,7 @@
 /*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:26:32 by kmailleu          #+#    #+#             */
-/*   Updated: 2025/05/05 17:43:54 by kmailleu         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:41:51 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <string>
 # include <iostream>
+
+class Bureaucrat;
 
 class Form
 {
@@ -26,9 +28,19 @@ private:
 
 public:
     Form();
+    Form(const std::string name, unsigned int signedGrade, unsigned int executeGrade);
     ~Form();
     Form(const Form &other);
     Form &operator=(const Form &other);
+
+    
+    std::string getName() const;
+    unsigned int getGrade() const;
+    bool getIsSigned() const;
+    unsigned int getSignedGrade() const;
+    unsigned int getExecuteGrade() const;
+    void beSigned(Bureaucrat &bureaucrat);
+
 
     class Exception : public std::exception
     {
