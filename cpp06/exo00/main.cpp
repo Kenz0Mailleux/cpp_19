@@ -5,34 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kenzo <kenzo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 16:22:40 by kenzo             #+#    #+#             */
-/*   Updated: 2025/11/05 16:23:40 by kenzo            ###   ########.fr       */
+/*   Created: 2025/11/05 16:57:17 by kenzo             #+#    #+#             */
+/*   Updated: 2025/11/05 16:57:22 by kenzo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/Intern.hpp"
+#include <iostream>
+#include "include/ScalarConverter.hpp"
 
-//test généré
-int main()
-{
-    try {
-        Intern intern;
-        AForm* form;
-
-        form = intern.makeForm("robotomy request", "Bender");
-        delete form;
-
-        form = intern.makeForm("shrubbery creation", "home");
-        delete form;
-
-        form = intern.makeForm("presidential pardon", "Ford Prefect");
-        delete form;
-
-        form = intern.makeForm("coffee form", "office");
-        delete form;
+int main(int argc, char **argv) {
+    if (argc != 2) {
+        std::cerr << "Usage: ./convert <literal>\n";
+        return 1;
     }
-    catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
+    ScalarConverter::convert(argv[1]);
     return 0;
 }

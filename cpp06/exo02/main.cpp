@@ -5,34 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kenzo <kenzo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 16:22:40 by kenzo             #+#    #+#             */
-/*   Updated: 2025/11/05 16:23:40 by kenzo            ###   ########.fr       */
+/*   Created: 2025/11/05 17:03:04 by kenzo             #+#    #+#             */
+/*   Updated: 2025/11/05 17:03:06 by kenzo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/Intern.hpp"
+#include <iostream>
+#include "include/Base.hpp"
 
-//test généré
-int main()
-{
-    try {
-        Intern intern;
-        AForm* form;
-
-        form = intern.makeForm("robotomy request", "Bender");
-        delete form;
-
-        form = intern.makeForm("shrubbery creation", "home");
-        delete form;
-
-        form = intern.makeForm("presidential pardon", "Ford Prefect");
-        delete form;
-
-        form = intern.makeForm("coffee form", "office");
-        delete form;
-    }
-    catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;
+int main() {
+    for (int i = 0; i < 5; ++i) {
+        Base *p = generate();
+        std::cout << "identify(pointer): "; identify(p);
+        std::cout << "identify(ref):     "; identify(*p);
+        delete p;
+        std::cout << "---\n";
     }
     return 0;
 }

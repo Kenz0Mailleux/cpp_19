@@ -5,34 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kenzo <kenzo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 16:22:40 by kenzo             #+#    #+#             */
-/*   Updated: 2025/11/05 16:23:40 by kenzo            ###   ########.fr       */
+/*   Created: 2025/11/05 17:00:26 by kenzo             #+#    #+#             */
+/*   Updated: 2025/11/05 17:00:32 by kenzo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/Intern.hpp"
+#include <iostream>
+#include "include/Serializer.hpp"
 
-//test généré
-int main()
-{
-    try {
-        Intern intern;
-        AForm* form;
+int main() {
+    Data d;
+    d.id = 42; d.name = "Kenzo"; d.score = 19.75;
 
-        form = intern.makeForm("robotomy request", "Bender");
-        delete form;
+    uintptr_t raw = Serializer::serialize(&d);
+    Data *back = Serializer::deserialize(raw);
 
-        form = intern.makeForm("shrubbery creation", "home");
-        delete form;
+    std::cout << "Original ptr: " << &d << "\n";
+    std::cout << "Deserialized: " << back << "\n";
 
-        form = intern.makeForm("presidential pardon", "Ford Prefect");
-        delete form;
-
-        form = intern.makeForm("coffee form", "office");
-        delete form;
-    }
-    catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;
+    if (back == &d) {
+        std::cout << "OK: pointers match\n";
+        std::cout << "Data: { id=" << back->id << ", name=" << back->name
+                  << ", score=" << back->score << " }\n";
+    } else {
+        std::cout << "ERROR: pointers differ\n";
     }
     return 0;
 }
