@@ -5,107 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 16:28:04 by kenzo             #+#    #+#             */
-/*   Updated: 2025/05/05 17:10:02 by kmailleu         ###   ########.fr       */
+/*   Created: 2025/11/13 16:45:02 by kenzo             #+#    #+#             */
+/*   Updated: 2025/11/13 15:23:34 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include <iostream>
 #include "include/Bureaucrat.hpp"
 
-int main()
+int main(void)
 {
-	
-	std::cout << std::endl;
-	std::cout << "CONSTRUCTING WITH GRADE -49:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	try
-	{
-		Bureaucrat bill("Bill", -49);
-	}
-	catch (Bureaucrat::Exception &e)
-	{
-		std::cout << e.what();
-	}
-	std::cout << std::endl << std::endl;
-	//-------------------------------------------------------
+    std::cout << "===== TEST 1: Construction valide =====" << std::endl;
+    try {
+        Bureaucrat a("Alice", 42);
+        Bureaucrat b("Bob", 1);
+        Bureaucrat c("Charlie", 150);
 
-	// 256
-	std::cout << std::endl;
-	std::cout << "CONSTRUCTING WITH GRADE 256:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	try
-	{
-		Bureaucrat bill("Bill", 256);
-	}
-	catch (Bureaucrat::Exception &e)
-	{
-		std::cout << e.what();
-	}
-	std::cout << std::endl << std::endl;
-	//-------------------------------------------------------
+        std::cout << a << std::endl;
+        std::cout << b << std::endl;
+        std::cout << c << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cerr << "Exception attrapée: " << e.what() << std::endl;
+    }
 
-	// Normal increment/decrement and "<<" overload
-	std::cout << std::endl;
-	std::cout << "IN/DECREMENT + \"<<\" overload:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	Bureaucrat bob("Bob", 1);
-	try
-	{
-		bob.decrementGrade();
-	}
-	catch (Bureaucrat::Exception &e)
-	{
-		std::cout << e.what();
-	}
-	// "<<" operator overload used
-	std::cout << bob << std::endl;
-	try
-	{
-		bob.incrementGrade();
-	}
-	catch (Bureaucrat::Exception &e)
-	{
-		std::cout << e.what();
-	}
-	// "<<" operator overload used
-	std::cout << bob;
-	std::cout << std::endl << std::endl;
-	//-------------------------------------------------------
+    std::cout << "\n===== TEST 2: Construction invalide =====" << std::endl;
+    try {
+        Bureaucrat x("Xavier", 0);      // trop haut
+    }
+    catch (std::exception &e) {
+        std::cerr << "Exception attendue: " << e.what() << std::endl;
+    }
 
-	// Increment 1 exception
-	std::cout << std::endl;
-	std::cout << "INCREMENT GRADE 1:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	try
-	{
-		bob.incrementGrade();
-	}
-	catch (Bureaucrat::Exception &e)
-	{
-		std::cout << e.what();
-	}
-	std::cout << std::endl << std::endl;
-	//-------------------------------------------------------
+    try {
+        Bureaucrat y("Yves", 151);      // trop bas
+    }
+    catch (std::exception &e) {
+        std::cerr << "Exception attendue: " << e.what() << std::endl;
+    }
 
-	// Decrement 150 exception
-	std::cout << std::endl;
-	std::cout << "DECREMENT GRADE 150:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	bob.setGrade(150);
-	try
-	{
-		bob.decrementGrade();
-	}
-	catch (Bureaucrat::Exception &e)
-	{
-		std::cout << e.what();
-	}
-	std::cout << std::endl << std::endl;
+    std::cout << "\n===== TEST 3: incrementGrade() =====" << std::endl;
+    try {
+        Bureaucrat b("Benoit", 3);
+        std::cout << b << std::endl;
 
-	//-------------------------------------------------------
-	std::cout << std::endl;
-	std::cout << "DESTRUCTORS:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	return (0);
+        b.incrementGrade();
+        std::cout << b << std::endl;    // 2
+
+        b.incrementGrade();
+        std::cout << b << std::endl;    // 1
+
+        b.incrementGrade();             // dépasse
+        std::cout << b << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cerr << "Exception attrapée: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n===== TEST 4: decrementGrade() =====" << std::endl;
+    try {
+        Bureaucrat c("Clement", 149);
+        std::cout << c << std::endl;
+
+        c.decrementGrade();
+        std::cout << c << std::endl;    // 150
+
+        c.decrementGrade();             // dépasse
+        std::cout << c << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cerr << "Exception attrapée: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n===== TEST FINAL: operator<< =====" << std::endl;
+    Bureaucrat d("Dorian", 42);
+    std::cout << d << std::endl;
+
+    return 0;
 }

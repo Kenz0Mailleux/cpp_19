@@ -27,7 +27,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 void RobotomyRequestForm::doAction() const {
     static bool seeded = false;
     if (!seeded) { std::srand(static_cast<unsigned int>(std::time(0))); seeded = true; }
-    std::cout << "* BZZzzzz… drrrrrr… *" << std::endl;
+    std::cout << "Brrrzzz ... Tung tung tung tsaour" << std::endl;
     if (std::rand() % 2)
         std::cout << _target << " has been robotomized successfully!" << std::endl;
     else
