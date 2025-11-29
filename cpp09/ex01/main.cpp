@@ -5,31 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmailleu <kmailleu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/25 17:42:51 by kmailleu          #+#    #+#             */
-/*   Updated: 2025/11/25 17:42:53 by kmailleu         ###   ########.fr       */
+/*   Created: 2025/02/10 15:00:00 by kmailleu          #+#    #+#             */
+/*   Updated: 2025/02/10 15:00:00 by kmailleu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "include/whatever.hpp"
+#include "include/RPN.hpp"
 
-int main(void)
+int main(int argc, char **argv)
 {
-	int a = 2;
-	int b = 3;
+	if (argc != 2)
+	{
+		std::cerr << "Error" << std::endl;
+		return 1;
+	}
 
-	::swap(a, b);
-	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min(a, b) = " << ::min(a, b) << std::endl;
-	std::cout << "max(a, b) = " << ::max(a, b) << std::endl;
-
-	std::string c = "chaine1";
-	std::string d = "chaine2";
-
-	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min(c, d) = " << ::min(c, d) << std::endl;
-	std::cout << "max(c, d) = " << ::max(c, d) << std::endl;
-
+	try
+	{
+		long result = RPN::evaluate(argv[1]);
+		std::cout << result << std::endl;
+	}
+	catch (std::exception const &)
+	{
+		std::cerr << "Error" << std::endl;
+		return 1;
+	}
 	return 0;
 }
